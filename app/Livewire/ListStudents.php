@@ -3,13 +3,12 @@
 namespace App\Livewire;
 
 use App\Models\Student;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
-use livewire\WithPagination;
+use Livewire\WithPagination;
 
 class ListStudents extends Component
 {
-    #[Layout('layouts.app')]
+    use WithPagination;
     public function render()
     {
         return view('livewire.list-students',
