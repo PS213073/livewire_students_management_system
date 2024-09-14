@@ -15,4 +15,9 @@ class ListStudents extends Component
             ['students' => Student::paginate()]
         );
     }
+
+    public function deleteStudent($stidentId)
+    {
+        Student::find($stidentId)->delete();
+    }
 }
