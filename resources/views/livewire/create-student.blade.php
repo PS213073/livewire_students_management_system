@@ -18,7 +18,7 @@
                                 <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                                 <input type="text" id="name" wire:model="name"
                                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('name') text-red-900 focus:ring-red-500 focus:border-red-500 border-red-300 @enderror
-                                    " />
+                                    "/>
                                 @error('name')
                                 <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                 @enderror
@@ -28,7 +28,7 @@
                                 <label for="email" class="block text-sm font-medium text-gray-700">Email
                                     Address</label>
                                 <input type="text" wire:model="email" id="email" autocomplete="email"
-                                       class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('email') text-red-900 focus:ring-red-500 focus:border-red-500 border-red-300 @enderror" />
+                                       class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('email') text-red-900 focus:ring-red-500 focus:border-red-500 border-red-300 @enderror"/>
                                 @error('email')
                                 <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                 @enderror
@@ -36,7 +36,7 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="class_id" class="block text-sm font-medium text-gray-700">Class</label>
-                                <select id="class_id" wire:model="class_id"
+                                <select id="class_id" wire:model.live="class_id"
                                         class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('class_id') text-red-900 focus:ring-red-500 focus:border-red-500 border-red-300 @enderror">
                                     <option value="">Select a Class</option>
                                     @foreach ($classes as $class)
@@ -55,9 +55,11 @@
                                 <select id="section_id" wire:model="section_id"
                                         class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('section_id') text-red-900 focus:ring-red-500 focus:border-red-500 border-red-300 @enderror">
                                     <option value="">Select a Section</option>
-                                    <option value="1">
-                                        Section A
-                                    </option>
+                                    @foreach($sections as $section)
+                                        <option value="{{ $section->id }}">
+                                            {{ $section->name }}
+                                        </option>
+                                    @endforeach
                                 </select>
                                 @error('section_id')
                                 <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
@@ -66,7 +68,7 @@
                         </div>
                     </div>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                        <a href="{{ route('students.index') }}" as="button"
+                        <a href="{{ route('students.index') }}"
                            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Cancel
                         </a>
