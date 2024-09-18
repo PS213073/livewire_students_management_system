@@ -12,7 +12,7 @@ class ListStudents extends Component
     public function render()
     {
         return view('livewire.list-students',
-            ['students' => Student::paginate()]
+            ['students' => Student::paginate(10)]
         );
     }
 
