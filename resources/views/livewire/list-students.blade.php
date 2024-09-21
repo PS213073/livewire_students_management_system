@@ -72,18 +72,18 @@
                                     <tr>
                                         <th scope="col"
                                             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-{{--                                                                                    <x-check-all/>--}}
+                                            {{--                                                                                    <x-check-all/>--}}
                                         </th>
                                         <th scope="col"
                                             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                            {{--                                        <x-sortable column="id" :$sortColumn :$sortDirection>--}}
-                                                                                        ID
-                                            {{--                                        </x-sortable>--}}
+                                            <button wire:click="sortBy('id')">
+                                                ID
+                                            </button>
                                         </th>
                                         <th scope="col"
                                             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                                             {{--                                        <x-sortable column="name" :$sortColumn :$sortDirection>--}}
-                                                                                        Name
+                                            Name
                                             {{--                                        </x-sortable>--}}
                                         </th>
                                         <th scope="col"
