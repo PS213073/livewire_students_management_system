@@ -76,15 +76,17 @@
                                         </th>
                                         <th scope="col"
                                             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                            <button wire:click="sortBy('id')">
+                                            <x-sortable
+                                                column="id" :sortColumn="$sortColumn"
+                                                :sortDirection="$sortDirection">
                                                 ID
-                                            </button>
+                                            </x-sortable>
                                         </th>
                                         <th scope="col"
                                             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                            {{--                                        <x-sortable column="name" :$sortColumn :$sortDirection>--}}
-                                            Name
-                                            {{--                                        </x-sortable>--}}
+                                            <x-sortable column="name" :$sortColumn :$sortDirection>
+                                                Name
+                                            </x-sortable>
                                         </th>
                                         <th scope="col"
                                             class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
@@ -100,11 +102,11 @@
                                         </th>
                                         <th scope="col"
                                             class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                            {{--                                        <x-sortable column="created_at" :$sortColumn :$sortDirection>--}}
-                                            {{--                                            Created At--}}
-                                            {{--                                        </x-sortable>--}}
+                                            <x-sortable column="created_at" :$sortColumn :$sortDirection>
+                                                Created At
+                                            </x-sortable>
                                         </th>
-                                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6"/>
+{{--                                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6"/>--}}
                                     </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200 bg-white">

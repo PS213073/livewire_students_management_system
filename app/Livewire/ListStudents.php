@@ -13,7 +13,7 @@ class ListStudents extends Component
 
     public string $search = '';
 
-    public string $sortColumn = 'id', $sortDirection = 'desc';
+    public string $sortColumn = 'created_at', $sortDirection = 'desc';
 
     public function render()
     {
