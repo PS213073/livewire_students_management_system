@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Builder;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -37,15 +38,15 @@ class ListStudents extends Component
 //            });
     }
 
-    public function deleteStudent($studentId): void
-    {
-        Student::find($studentId)->delete();
-    }
-
     protected function applySort(): Builder
     {
         return Student::query()
             ->orderBy($this->sortColumn, $this->sortDirection);
+    }
+
+    public function deleteStudent($studentId): void
+    {
+        Student::find($studentId)->delete();
     }
 
     public function sortBy(string $column)
@@ -56,5 +57,13 @@ class ListStudents extends Component
             $this->sortColumn = $column;
             $this->sortDirection = 'asc';
         }
+    }
+
+    public function queryString()
+    {
+        return [
+            'sortColumn',
+            'sortDirection',
+        ];
     }
 }

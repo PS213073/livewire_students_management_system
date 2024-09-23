@@ -106,7 +106,7 @@
                                                 Created At
                                             </x-sortable>
                                         </th>
-{{--                                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6"/>--}}
+                                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6"/>
                                     </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200 bg-white">
