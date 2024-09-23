@@ -30,8 +30,9 @@
                            id="search" autocomplete="off"
                            class="block rounded-lg border-0 py-2 pl-10 text-gray-900 ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
+
                 <div x-show="$wire.selectedStudentIds.length > 0"
-                     class="flex flex-col sm:flex-row gap-2 sm:justify-end col-span-5">
+                    class="flex flex-col sm:flex-row gap-2 sm:justify-end col-span-5">
                     <div class="flex flex-row-reverse justify-end sm:justify-start sm:flex-row gap-2">
                         <div class="flex items-center gap-1 text-md text-gray-600">
                             <span x-text="$wire.selectedStudentIds.length"></span>
@@ -40,7 +41,7 @@
                         <div class="flex items-center px-3">
                             <div class="h-[75%] w-[1px] bg-gray-300"></div>
                         </div>
-                        {{--                        <x-check-all-button/>--}}
+                        <x-check-all-button/>
                         <form wire:submit="deleteStudents"
                               wire:confirm="Are you sure you want to delete these Records?">
                             <button type="submit"
@@ -72,7 +73,7 @@
                                     <tr>
                                         <th scope="col"
                                             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                            {{--                                                                                    <x-check-all/>--}}
+                                            <x-check-all/>
                                         </th>
                                         <th scope="col"
                                             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">

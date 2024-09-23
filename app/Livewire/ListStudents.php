@@ -16,6 +16,8 @@ class ListStudents extends Component
 
     public string $sortColumn = 'created_at', $sortDirection = 'desc';
 
+    public array $selectedStudentIds = [];
+
     public function render()
     {
         $query = Student::query();
@@ -44,9 +46,12 @@ class ListStudents extends Component
             ->orderBy($this->sortColumn, $this->sortDirection);
     }
 
-    public function deleteStudent($studentId): void
+    public function deleteStudent(Student $student): void
     {
-        Student::find($studentId)->delete();
+        // Authorization check
+
+
+        $student->delete();
     }
 
     public function sortBy(string $column)
@@ -59,11 +64,19 @@ class ListStudents extends Component
         }
     }
 
-    public function queryString()
+    public function queryString(): array
     {
         return [
             'sortColumn',
             'sortDirection',
         ];
+    }
+
+    public function deleteStudents() : void
+    {
+        $students = Student::find($this->selectedStudentIds);
+        foreach ($students as $student) {
+            $this->deleteStudent($student);
+        }
     }
 }
