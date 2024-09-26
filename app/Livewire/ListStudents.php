@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Exports\StudentsExport;
 use App\Models\Student;
+use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -47,14 +48,6 @@ class ListStudents extends Component
             ->orderBy($this->sortColumn, $this->sortDirection);
     }
 
-    public function deleteStudent(Student $student): void
-    {
-        // Authorization check
-
-
-        $student->delete();
-    }
-
     public function sortBy(string $column)
     {
         if ($this->sortColumn === $column) {
@@ -73,16 +66,29 @@ class ListStudents extends Component
         ];
     }
 
-    public function deleteStudents() : void
+    public function deleteStudents(): void
     {
         $students = Student::find($this->selectedStudentIds);
         foreach ($students as $student) {
             $this->deleteStudent($student);
         }
+
+        Notification::make()
+            ->title('Selected records deleted successfully!')
+            ->success()
+            ->send();
+    }
+
+    public function deleteStudent(Student $student): void
+    {
+        // Authorization check
+
+
+        $student->delete();
     }
 
     public function export()
     {
-        return (new StudentsExport($this->selectedStudentIds))->download(now().'students.xlsx');
+        return (new StudentsExport($this->selectedStudentIds))->download(now() . 'students.xlsx');
     }
 }

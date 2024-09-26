@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Livewire\Forms\CreateStudentForm;
 use App\Models\Classes;
+use Filament\Notifications\Notification;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -20,8 +21,13 @@ class CreateStudent extends Component
 
         $this->form->storeStudent($this->class_id);
 
+        Notification::make()
+            ->title('Student added successfully')
+            ->success()
+            ->send();
 //        return $this->redirect(route('students.index'), navigate:true);
         return redirect(route('students.index'));
+
     }
 
     public function updatedClassId($classId)

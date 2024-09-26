@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Livewire\Forms\UpdateStudentForm;
 use App\Models\Classes;
 use App\Models\Student;
+use Filament\Notifications\Notification;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -36,6 +37,11 @@ class EditStudent extends Component
         ]);
 
         $this->form->updateStudent($this->class_id, $this->email);
+
+        Notification::make()
+            ->title('Student updated successfully')
+            ->success()
+            ->send();
 
          return redirect(route('students.index'));
     }
