@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Exports\StudentsExport;
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Url;
@@ -78,5 +79,10 @@ class ListStudents extends Component
         foreach ($students as $student) {
             $this->deleteStudent($student);
         }
+    }
+
+    public function export()
+    {
+        return (new StudentsExport($this->selectedStudentIds))->download(now().'students.xlsx');
     }
 }
